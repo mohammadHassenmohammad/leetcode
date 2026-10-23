@@ -1,0 +1,47 @@
+// solved using the sorting method 
+*we check the length of the string and if the length is same it will proceed with the program or return false
+*we first convert the string into the charactor array
+*then we sort them 
+*then we compare them if the array is same it return true 
+
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+     if(s.length()!=t.length()){
+        return false;
+     }
+     char []a=s.toCharArray();
+     char []b=t.toCharArray();
+     Arrays.sort(a);
+     Arrays.sort(b);
+     return Arrays.equals(a,b);
+    }
+}
+
+// another method
+*in this method we use to count the each caractor 
+*we check the string length if the length is different it will return false
+*we use the for loop length of s 
+*then we increase the counter by counting the first striing charactor
+*then we decrease the counter by counting the second striing charactor
+*at the end we will check all the charactors are 0 or not if all of them are 0's then it will return true or false
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()){
+            return false;
+        }
+        char [] counter=new char[26];
+        for (int i=0;i<s.length();i++){
+            counter[s.charAt(i)-'a']++;
+            counter[t.charAt(i)-'a']--;
+        }
+        for(int frequency:counter){
+            if(frequency!=0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+}
